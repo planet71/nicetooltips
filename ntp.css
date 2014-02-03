@@ -1,62 +1,161 @@
 /*
- * overflow: visible; is needed for tooltip to work properly.
- * If u use overflow: hidden; to clear floating elements,
- * use clearfix class or float instead.
+ * You can use attr selector or use class. It's up to you.
+ *
+ * overflow: visible; is needed for tooltip to work properly without JS.
+ * If u use overflow: hidden; to clear floating elements, use clearfix class or float instead.
  */
 .ntp,
-[data-tooltip] {
+[data-ntp] {
   position: relative !important;
+  overflow: visible !important;
 }
 
+.ntp:after,
+.ntp:before,
+[data-ntp]:after,
+[data-ntp]:before {
+  position: absolute;
+  z-index: 999;
+}
+
+.ntp:after,
+[data-ntp]:after {
+  content: attr(data-ntp);
+
+  /* fix chrome font rendering issue */
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+
+  /* default dimensions */
+  min-width: 100px;
+  max-width: 300px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
+  /* basic styles - change it if u like */
+  font: .75em/1.4 "Open Sans", sans-serif;
+  color: #333;
+  background: #f9f9f9;
+  border: 1px solid #ededed;
+  padding: 1em;
+  border-radius: 5px;
+}
 
 
 /*
- * You can use attr selector or use class. It's up to you.
+ * Animation.
  */
-.ntp:hover,
-.ntp:focus,
-[data-tooltip]:hover,
-[data-tooltip]:focus {
-  overflow: visible;
-}
-
 .ntp:after,
-.ntp:after,
-[data-tooltip]:after,
-[data-tooltip]:after {
-  content: attr(data-tooltip);
-  position: absolute;
-  z-index: 999;
-  overflow: hidden;
-
-  /* additional styles */
-  height: 0;
+.ntp:before,
+[data-ntp]:after,
+[data-ntp]:before {
+  visibility: hidden;
   opacity: 0;
-  cursor: default;
-  -webkit-transition: opacity .5s ease-in-out;
-     -moz-transition: opacity .5s ease-in-out;
-       -o-transition: opacity .5s ease-in-out;
-          transition: opacity .5s ease-in-out;
+  text-align: left;
+  -webkit-transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+     -moz-transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+       -o-transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+          transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
 }
 
 .ntp:hover:after,
 .ntp:focus:after,
-[data-tooltip]:hover:after,
-[data-tooltip]:focus:after {
-  overflow: visible;
-
-  /* additional styles */
-  height: auto;
-  max-height: 999px;
+[data-ntp]:hover:after,
+[data-ntp]:focus:after,
+.ntp:hover:before,
+.ntp:focus:before,
+[data-ntp]:hover:before,
+[data-ntp]:focus:before {
+  visibility: visible;
   opacity: 1;
 }
 
 
 
 /*
- * These are steereing classes.
+ * Positions rules.
  */
-.ntp-top:after,
-[data-tooltip-top]:after {
+/* bottom */
+.ntp-bottom:after,
+[data-ntp-pos="bottom"]:after {
+  top: 100%;
+  left: 0;
+  margin-top: 1em;
+}
 
+/* top */
+.ntp-top:after,
+[data-ntp-pos="top"]:after {
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 1em;
+}
+
+.ntp-left:after,
+[data-ntp-pos="left"]:after {
+  right: 100%;
+  top: 0;
+  margin-right: 1em;
+}
+
+/* top */
+.ntp-right:after,
+[data-ntp-pos="right"]:after {
+  left: 100%;
+  top: 0;
+  margin-left: 1em;
+}
+
+
+/*
+ * Arrows.
+ * If you don't want it, erease or comment styles below this line.
+ */
+.ntp-bottom:before,
+.ntp-top:before,
+.ntp-left:before,
+.ntp-right:before,
+[data-ntp-pos="bottom"]:before,
+[data-ntp-pos="top"]:before,
+[data-ntp-pos="left"]:before,
+[data-ntp-pos="right"]:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: .8em solid transparent;
+}
+/* bottom */
+.ntp-bottom:before,
+[data-ntp-pos="bottom"]:before {
+  left: 10%;
+  top: 100%;
+  margin-top: -.5em;
+  border-bottom-color: #ededed;
+}
+/* top */
+.ntp-top:before,
+[data-ntp-pos="top"]:before {
+  left: 10%;
+  top: 0;
+  margin-top: -1em;
+  border-top-color: #ededed;
+}
+/* left */
+.ntp-top:before,
+[data-ntp-pos="left"]:before {
+  left: 0;
+  top: 10%;
+  margin-left: -1em;
+  border-left-color: #ededed;
+}
+/* right */
+.ntp-top:before,
+[data-ntp-pos="right"]:before {
+  left: 100%;
+  top: 10%;
+  margin-left: -.5em;
+  border-right-color: #ededed;
 }

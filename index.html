@@ -4,8 +4,27 @@
     <title>nicetooltips</title>
     <meta charset="utf-8">
     <link href="ntp.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
   </head>
   <body>
-    <a href="/" data-tooltip="This is tooltip!">hover to see the tooltip</a>
+    <div class="test">
+    <h1>CSS Only</h1>
+    <div class="wrapper">
+      <h2>Block elements</h2>
+      <h3>Hover to display tooltip</h3>
+      <div data-ntp-pos="top" data-ntp="Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet!">top</div>
+      <div data-ntp-pos="right" data-ntp="Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet!">right</div><br>
+      <div data-ntp-pos="left" data-ntp="Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet!">left</div>
+      <div data-ntp-pos="bottom" data-ntp="Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet!">bottom</div>
+    </div>
+    <div class="wrapper">
+      <h2>Inline elements</h2>
+      <h3>Hover to display tooltip</h3>
+      <span data-ntp-pos="top" data-ntp="Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet!">top</span>
+      <span data-ntp-pos="right" data-ntp="Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet!">right</span>
+      <span data-ntp-pos="left" data-ntp="Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet!">left</span>
+      <span data-ntp-pos="bottom" data-ntp="Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet! Lorem ipsum dolores sit amet!">bottom</span>
+    </div>
+  </div>
   </body>
 </html>
