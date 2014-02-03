@@ -1,0 +1,62 @@
+/*
+ * overflow: visible; is needed for tooltip to work properly.
+ * If u use overflow: hidden; to clear floating elements,
+ * use clearfix class or float instead.
+ */
+.ntp,
+[data-tooltip] {
+  position: relative !important;
+}
+
+
+
+/*
+ * You can use attr selector or use class. It's up to you.
+ */
+.ntp:hover,
+.ntp:focus,
+[data-tooltip]:hover,
+[data-tooltip]:focus {
+  overflow: visible;
+}
+
+.ntp:after,
+.ntp:after,
+[data-tooltip]:after,
+[data-tooltip]:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  z-index: 999;
+  overflow: hidden;
+
+  /* additional styles */
+  height: 0;
+  opacity: 0;
+  cursor: default;
+  -webkit-transition: opacity .5s ease-in-out;
+     -moz-transition: opacity .5s ease-in-out;
+       -o-transition: opacity .5s ease-in-out;
+          transition: opacity .5s ease-in-out;
+}
+
+.ntp:hover:after,
+.ntp:focus:after,
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:after {
+  overflow: visible;
+
+  /* additional styles */
+  height: auto;
+  max-height: 999px;
+  opacity: 1;
+}
+
+
+
+/*
+ * These are steereing classes.
+ */
+.ntp-top:after,
+[data-tooltip-top]:after {
+
+}
