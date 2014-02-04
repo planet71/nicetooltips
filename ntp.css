@@ -133,29 +133,33 @@
   left: 10%;
   top: 100%;
   margin-top: -.5em;
+
   border-bottom-color: #ededed;
 }
 /* top */
 .ntp-top:before,
 [data-ntp-pos="top"]:before {
   left: 10%;
-  top: 0;
-  margin-top: -1em;
+  bottom: 100%;
+  margin-bottom: -.5em;
+
   border-top-color: #ededed;
 }
 /* left */
-.ntp-top:before,
+.ntp-left:before,
 [data-ntp-pos="left"]:before {
-  left: 0;
+  right: 100%;
   top: 10%;
-  margin-left: -1em;
+  margin-right: -.5em;
+
   border-left-color: #ededed;
 }
 /* right */
-.ntp-top:before,
+.ntp-right:before,
 [data-ntp-pos="right"]:before {
   left: 100%;
   top: 10%;
   margin-left: -.5em;
+
   border-right-color: #ededed;
 }

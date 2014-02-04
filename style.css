@@ -11,12 +11,6 @@ body {
   vertical-align: top;
   text-align: left;
 }
-.wrapper:before,
-.wrapper:after {
-  content: '.';
-  width: 100%;
-  display: block;
-}
 .wrapper > h2 {
   font-weight: normal;
   font-size: 1.6em;
@@ -42,4 +36,3 @@ body {
 .wrapper > span {
   line-height: 2em;
 }
-
